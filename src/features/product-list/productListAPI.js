@@ -3,6 +3,7 @@ export function fetchAllProducts() {
     //TODO: we will not hard-code server URL here
     const response = await fetch('http://localhost:8080/products') 
     const data = await response.json()
+    console.log("total data: ", data);
     resolve({data})
   }
   );
@@ -39,6 +40,8 @@ export function fetchProductsByFilters(filter,sort,pagination) {
   for(let key in pagination){
     queryString += `${key}=${pagination[key]}&`
   }
+  console.log(" page :", pagination);
+  // console.log("key  &  paagenation ",key, "  ", pagination[key]);
 
 
   return new Promise(async (resolve) =>{

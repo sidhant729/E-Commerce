@@ -37,6 +37,7 @@ function classNames(...classes) {
 }
 
 export default function ProductList() {
+  
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
   const brands = useSelector(selectBrands);
@@ -108,6 +109,7 @@ export default function ProductList() {
   return (
     <div className="bg-white">
       <div>
+      {console.log("totalItems is ", totalItems)}
         <MobileFilter
           handleFilter={handleFilter}
           mobileFiltersOpen={mobileFiltersOpen}
@@ -209,6 +211,7 @@ export default function ProductList() {
             setPage={setPage}
             handlePage={handlePage}
             totalItems={totalItems}
+            products = {products}
           ></Pagination>
         </main>
       </div>
@@ -391,7 +394,8 @@ function DesktopFilter({ handleFilter, filters }) {
   );
 }
 
-function Pagination({ page, setPage, handlePage, totalItems }) {
+function Pagination({ page, setPage, handlePage, totalItems, products }) {
+  console.log("products: ", products);
   const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
