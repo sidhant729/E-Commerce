@@ -4,6 +4,7 @@ import {
   fetchBrandsAsync,
   fetchCategoriesAsync,
   fetchProductsByFiltersAsync,
+  fetchAllProductsAsync,
   selectAllProducts,
   selectBrands,
   selectCategories,
@@ -37,9 +38,9 @@ function classNames(...classes) {
 }
 
 export default function ProductList() {
-  
   const dispatch = useDispatch();
   const products = useSelector(selectAllProducts);
+  console.log("all products in product list : ", products);
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const totalItems = useSelector(selectTotalItems);
@@ -95,6 +96,7 @@ export default function ProductList() {
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
     dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
+    // dispatch(fetchAllProductsAsync());
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {

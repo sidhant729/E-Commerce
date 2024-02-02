@@ -3,7 +3,7 @@ export function fetchAllProducts() {
     //TODO: we will not hard-code server URL here
     const response = await fetch('http://localhost:8080/products') 
     const data = await response.json()
-    console.log("total data: ", data);
+    console.log("mera response ", response);
     resolve({data})
   }
   );
