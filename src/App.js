@@ -3,7 +3,8 @@ import './App.css';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-
+import PageNotFound from './pages/404';
+import OrderSuccessPage from './pages/OrderSuccessPage'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,6 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchItemsByUserId } from './features/cart/cartAPI';
 import { fetchAllProductByIdAsync } from './features/product-list/productListSlice';
 import { selectLoggedInUser } from './features/auth/authSlice';
+import UserOrdersPage from './pages/UserOrdersPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -45,6 +47,18 @@ const router = createBrowserRouter([
     path: '/product-detail/:id',
     element: <Protected><ProductDetailPage></ProductDetailPage></Protected>,
   },
+  { 
+    path: '/order-success/:id',
+    element: <OrderSuccessPage></OrderSuccessPage>,
+  },
+  { 
+    path: '/orders',
+    element: <UserOrdersPage></UserOrdersPage>,
+  },
+  { 
+    path: '*',
+    element: <PageNotFound> </PageNotFound>,
+  }
 ]);
 
 function App() {
