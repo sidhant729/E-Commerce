@@ -2,12 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   clearSelectedProduct,
   createProductAsync,
-  fetchProductByIdAsync,
+  fetchAllProductByIdAsync,
   selectBrands,
   selectCategories,
   selectProductById,
   updateProductAsync,
-} from '../../product/productSlice';
+} from '../../product-list/productListSlice';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -28,7 +28,7 @@ function ProductForm() {
 
   useEffect(() => {
     if (params.id) {
-      dispatch(fetchProductByIdAsync(params.id));
+      dispatch(fetchAllProductByIdAsync(params.id));
     } else {
       dispatch(clearSelectedProduct());
     }
